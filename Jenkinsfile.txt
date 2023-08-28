@@ -1,0 +1,74 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Using Maven to build the code...'
+            }
+        }
+        
+        stage('Unit and Integration Tests') {
+            steps {
+                echo 'Running unit and integration tests using JUnit...'
+            }
+        }
+        
+        stage('Code Analysis') {
+            steps {
+                echo 'Running code analysis using SonarQube...'
+            }
+        }
+        
+        stage('Security Scan') {
+            steps {
+                echo 'Performing security scan using OWASP Dependency-Check...'
+            }
+        }
+        
+        stage('Deploy to Staging') {
+            steps {
+                echo 'Deploying to staging server using AWS EC2 instance...'
+            }
+        }
+        
+        stage('Integration Tests on Staging') {
+            steps {
+                echo 'Running integration tests on staging environment...'
+            }
+        }
+        
+        stage('Deploy to Production') {
+            steps {
+                echo 'Deploying to production server using AWS EC2 instance...'
+            }
+        }
+        
+        stage('Completed') {
+            steps {
+                echo 'Pipeline completed.'
+            }
+        }
+    }
+    
+    post {
+        success {
+            emailext (
+		mimeType: 'text/html',
+                attachLog: true,
+                body: 'Email sent by Jenkins',
+                subject: 'Logs Email - Success',
+                to: 'vinittest31@gmail.com'
+            )
+        }
+        failure {
+            emailext (
+		mimeType: 'text/html',
+                attachLog: true,
+                body: 'Email sent by Jenkins',
+                subject: 'Logs Email - Failure',
+                to: 'vinittest31@gmail.com'
+            )
+        }
+    }
+}
