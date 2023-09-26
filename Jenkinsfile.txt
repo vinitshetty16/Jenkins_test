@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Using Maven to build the code...'
+                echo 'Using Maven to build the code..'
             }
         }
         
@@ -40,7 +40,7 @@ pipeline {
         
         stage('Deploy to Production') {
             steps {
-                echo 'Deploying to production server using AWS EC2 instance...'
+                echo 'Deploying to production server using AWS EC2 instance.'
             }
         }
         
