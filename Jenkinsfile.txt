@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Using Maven to build the code..'
+                echo 'Using Maven to build the code....'
             }
         }
         
         stage('Unit and Integration Tests') {
             steps {
-                echo 'Running unit and integration tests using JUnit...'
+                echo 'Running unit and integration tests using JUnit....'
             }
         }
         
@@ -22,7 +22,7 @@ pipeline {
         
         stage('Security Scan') {
             steps {
-                echo 'Performing security scan using OWASP Dependency-Check...'
+                echo 'Performing security scan using OWASP Dependency-Check....'
             }
         }
         
